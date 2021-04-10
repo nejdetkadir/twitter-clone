@@ -1,1 +1,85 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+$twtblue: rgb(29, 161, 242);
+$twbluelight: #0dcaf01a;
+$twbluedark: #0083d4eb;
+
+html,body{
+  width: 100vw;
+  height: 100vh;
+}
+
+#home-area{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#home-background{
+  background-image: url("home-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.twitter-light{
+  height: calc(3.5rem + 2px);
+  border-color: $twtblue;
+  color: $twtblue;
+}
+
+.twitter-dark{
+  height: calc(3.5rem + 2px);
+  background-color: $twtblue;
+  color: white;
+}
+
+.twitter-light:hover{
+  color: $twtblue;
+  background-color: $twbluelight;
+}
+
+.twitter-dark:hover{
+  color: white;
+  background-color: $twbluedark;
+}
+
+.tw-btn{
+  -webkit-box-pack: center !important;
+  justify-content: center !important;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center; 
+}
+
+.tw-btn > span{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.w-50{
+  width: 50% !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .fluid-in-mobile{
+    width: 100% !important;
+  }
+  
+  .hide-in-mobile{
+    display: none !important;
+  }
+
+  #home-area{
+    --bs-gutter-x: 0rem;
+  }
+  
+  #home-area > .col-md-6{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+  }
+}

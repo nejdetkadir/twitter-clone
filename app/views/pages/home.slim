@@ -1,0 +1,24 @@
+.row#home-area
+  .col-md-6#home-background.hide-in-mobile
+  .col-md-6
+    .container.pt-3
+      .row.hide-in-mobile
+        .col-md-4
+          .form-floating.mb-3
+            input.form-control(type='email' placeholder='Email')
+            label Email
+        .col-md-4
+          .form-floating.mb-3
+            input.form-control(type='password' placeholder='Password')
+            label Password  
+        .col-md-4
+          = link_to new_user_session_path, class: "btn tw-btn twitter-light fluid-in-mobile" do
+            span Log in
+      div
+        .d-block
+          = image_tag "logo-dark.png", style: 'height: 45px; width:auto;', :class => "mb-5 mt-5"
+          h1.fw-bolder.mt-2(style="font-size: 64px;") Happening now
+          h2.fw-bolder.mt-4 Join Twitter today.
+          .d-grid.mt-5
+            = link_to  "Sign up", new_user_registration_path, class: "btn tw-btn twitter-dark mb-4 fluid-in-mobile w-50"
+            = link_to  "Log in", new_user_session_path, class: "btn tw-btn twitter-light fluid-in-mobile w-50"
