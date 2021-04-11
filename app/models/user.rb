@@ -12,7 +12,8 @@ class User < ApplicationRecord
   validates :bio, length: {maximum:160}
 
   # mounts
-
+  mount_uploader :profile_picture, ProfilePictureUploader
+  mount_uploader :profile_background_picture, ProfileBackgroundUploader
 
   # associations
 
