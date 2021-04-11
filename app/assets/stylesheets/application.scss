@@ -1,8 +1,19 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import "toastr/build/toastr";
 
 $twtblue: rgb(29, 161, 242);
 $twbluelight: #0dcaf01a;
 $twbluedark: #0083d4eb;
+
+.twt-btn{
+  color: white;
+  background-color: $twtblue;
+  border-color: $twtblue;
+}
+
+.twt-btn:hover{
+  color: white;
+}
 
 html,body{
   width: 100vw;

@@ -7,8 +7,8 @@ class User < ApplicationRecord
   # validates
   validates :fullname, presence: true, length: {minimum: 3, maximum: 30}
   validates :username, presence: true, uniqueness: {case_sensitive: false}
-  validates :location, length: {minimum: 2, maximum: 20}
-  validates :website, format: {with: /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/, message: "Please check your URL" }
+  validates :location, length: {maximum: 20}
+  # validates :website, format: {with: /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/, message: "Please check your URL" }
   validates :bio, length: {maximum:160}
 
   # mounts

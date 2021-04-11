@@ -13,3 +13,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "bootstrap/dist/js/bootstrap.bundle"
+import "jquery"
+global.toastr = require("toastr")

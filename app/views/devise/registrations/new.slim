@@ -1,0 +1,17 @@
+= render "shared/signup_modal"
+= render "devise/shared/error_messages", resource: resource
+- content_for :js do 
+  javascript:
+    $(document).on('turbolinks:load', function() {
+      $('#signupModal').modal('show')
+      $("#signupModal").removeAttr("role")
+      $("#signupModal").attr("data-bs-keyboard", "false")
+      $("#signupModal").attr("data-bs-backdrop", "static")
+      $(".btn-close").hide()
+
+      $('.modal').on('hidden.bs.modal', function() {
+        $('#signupModal').modal('show')
+      })
+    })
+
+    

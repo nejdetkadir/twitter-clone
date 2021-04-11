@@ -1,0 +1,124 @@
+#signupModal.modal.fade(tabindex='-1' aria-labelledby='signupModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered.modal-lg
+    .modal-content
+      .modal-header
+        h5#signupModalLabel.modal-title Create an account
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body.container(data-active-step="0")
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), local: false) do |f|
+          .text-center
+            = image_tag  "logo-dark.png", :class => "mt-5 mb-5", :style => "width: 45px; height: auto;"
+          .step.d-block
+            .form-floating.mb-3
+              = f.text_field :fullname, class: "form-control", placeholder: "Fullname"
+              label Fullname
+            .form-floating
+              = f.email_field :email, class: "form-control", placeholder: "Email"
+              label(for='floatingPassword') Email
+          .step.d-block
+            .form-floating.mb-3
+              = f.password_field :password, class: "form-control", placeholder: "Password"
+              label Password
+            .form-floating.mb-3
+              = f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation"
+              label Password Confirmation
+          .step.d-block
+            = f.file_field :profile_picture, class: "d-none", id: "pp-input"
+            .mb-3
+              = image_tag  "default_profile.png", :class => "rounded mx-auto d-block", :style => "width: 170px; height: 170px;", :id => "pp-image"
+              .text-center
+                button.btn.btn-link.text-decoration-none.mt-2#pp-btn(type='button') Upload a profile picture
+                br
+                small.mt-2 You can skip this step
+          .step.d-block
+            .form-floating.mb-3
+              = f.text_field :bio, class: "form-control", placeholder: "Bio"
+              label Bio
+            .text-center
+              br
+              small.mt-2 You can skip this step
+          .step.d-block
+            .form-floating.mb-3
+              = f.text_field :username, class: "form-control", placeholder: "Username"
+              label Username
+      .modal-footer
+        button.btn.twt-btn#previous-step(type='button') Previous
+        button.btn.twt-btn#next-step(type='button') Next
+- content_for :js do 
+  javascript:
+    $(document).on('turbolinks:load', function() {
+
+      let activeStep = parseInt($(".modal-body").attr("data-active-step"))
+
+      // events
+      $("#next-step").click(function() {
+        if (activeStep == ($(".step").length -1)) {
+          createAccount()
+        }
+
+        if (activeStep < ($(".step").length -1)) {
+          activeStep++
+          updateStep()
+        }
+      })
+
+      $("#previous-step").click(function() {
+        if (activeStep > 0) {
+          activeStep--
+          updateStep()
+        }
+      })
+
+      $("#pp-btn").click(function(e) {
+        $("#pp-input").click()
+      })
+
+      $("#pp-input").change(function(e) {
+        $("#pp-image").attr("src", URL.createObjectURL(e.target.files[0]))
+      })
+
+      $('.modal').on('hidden.bs.modal', resetForm)
+
+      // funcs
+      function resetForm() {
+        $(".new_user").trigger("reset")
+        $("#pp-image").attr("src", "/assets/default_profile.png")
+        activeStep = 0
+        updateStep()        
+      }
+
+      function updateStep() {
+        $('.step').each(function(index) {
+          if (index == activeStep) {
+            $(this).addClass("d-block")
+            $(this).removeClass("d-none")
+          } else {
+            $(this).addClass("d-none")
+            $(this).removeClass("d-block")
+          }
+        })
+
+        updateButtons()
+      }
+
+      function updateButtons() {
+        if (activeStep == 0) {
+          $("#previous-step").prop('disabled', true)
+        } else {
+          $("#previous-step").prop('disabled', false)
+        }
+
+        if (activeStep == ($(".step").length -1)) {
+          $("#next-step").html("Create an account")
+        } else {
+          $("#next-step").html("Next")
+        }
+      }
+
+      function createAccount() {
+        $(".new_user").submit()
+
+      }
+
+      updateStep()
+    })
