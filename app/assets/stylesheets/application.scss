@@ -66,6 +66,16 @@ html,body{
   align-items: center; 
 }
 
+.tw-text{
+  color: $twtblue !important;
+  text-decoration: none !important;
+}
+
+.tw-link:hover{
+  color: $twtblue i !important;
+  text-decoration: underline !important;
+}
+
 .tw-btn > span{
   padding-left: 20px;
   padding-right: 20px;
@@ -73,6 +83,10 @@ html,body{
 
 .w-50{
   width: 50% !important;
+}
+
+.w-100{
+  width: 100% !important;
 }
 
 @media only screen and (max-width: 600px) {

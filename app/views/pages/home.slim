@@ -2,18 +2,19 @@
   .col-md-6#home-background.hide-in-mobile
   .col-md-6
     .container.pt-3
-      .row.hide-in-mobile
-        .col-md-4
-          .form-floating.mb-3
-            input.form-control(type='email' placeholder='Email')
-            label Email
-        .col-md-4
-          .form-floating.mb-3
-            input.form-control(type='password' placeholder='Password')
-            label Password  
-        .col-md-4
-          = link_to new_user_session_path, class: "btn tw-btn twitter-light fluid-in-mobile" do
-            span Log in
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .row.hide-in-mobile
+          .col-md-4
+            .form-floating.mb-3
+              = f.email_field :email, class: "form-control", placeholder: "Email"
+              label Email
+          .col-md-4
+            .form-floating.mb-3
+              = f.password_field :password, class: "form-control", placeholder: "Password"
+              label Password  
+          .col-md-4
+            = f.submit "Log in", class: "btn tw-btn twitter-light fluid-in-mobile" do
+              span Log in
       div
         .d-block
           = image_tag "logo-dark.png", style: 'height: 45px; width:auto;', :class => "mb-5 mt-5"

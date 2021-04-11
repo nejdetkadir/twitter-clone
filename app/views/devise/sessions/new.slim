@@ -1,0 +1,19 @@
+.container
+  .row
+    .col-md-4.col-sm-12.mx-auto
+      = image_tag "logo-dark.png", style: 'height: 45px; width:auto;', :class => "mt-5"
+      h1.fw-bolder.mt-3.mb-3(style="font-size: 35px;") Log in to Twitter
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-floating.mb-4
+          = f.email_field :email, class: "form-control", placeholder: "Email"
+          label Email
+        .form-floating.mb-4
+          = f.password_field :password, class: "form-control", placeholder: "Password"
+          label Password
+        = f.submit "Log in", class: "btn tw-btn twitter-dark w-100"
+      .text-center
+        .d-flex.mt-4.justify-content-evenly
+          = link_to "Forgot password?", new_password_path(resource_name), class: "tw-text tw-link" 
+          span.tw-text .
+          = link_to "Sign up for Twitter", new_registration_path(resource_name), class: "tw-text tw-link" 
+          

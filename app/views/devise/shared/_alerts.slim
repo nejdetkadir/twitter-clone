@@ -1,10 +1,4 @@
 - if notice
-  .ui.info.message
-    i.close.icon
-    .header
-      = notice
+  = raw "<script>toastr.success('"+notice+"')</script>"
 -if alert
-  .ui.negative.message
-    i.close.icon
-    .header
-      = alert
+  = raw "<script>toastr.error('"+alert+"')</script>"
