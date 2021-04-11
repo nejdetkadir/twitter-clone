@@ -23,4 +23,9 @@
           .d-grid.mt-5
             button.btn.tw-btn.twitter-dark.mb-4.fluid-in-mobile.w-50(type='button' data-bs-toggle='modal' data-bs-target='#signupModal') Sign up
             = link_to  "Log in", new_user_session_path, class: "btn tw-btn twitter-light fluid-in-mobile w-50"
+css:
+  html,body{
+    width: 100vw;
+    height: 100vh;
+  }
 = render "shared/signup_modal"

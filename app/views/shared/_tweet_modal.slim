@@ -1,0 +1,32 @@
+#tweetModal.modal.fade(tabindex='-1' aria-labelledby='tweetModalLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        - if current_user.profile_picture?
+          = image_tag current_user.profile_picture_url(:small), class: "hide-in-desktop show-in-mobile"
+        - else
+          = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;", :class => "hide-in-desktop show-in-mobile"
+        button.btn-close.bg-twt(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .row
+          .col-md-2
+            - if current_user.profile_picture?
+              = image_tag current_user.profile_picture_url(:small), class: "hide-in-mobile"
+            - else
+              = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;" , :class => "hide-in-mobile"
+          .col-md-10
+            textarea#tw-modal-txarea(rows="8" placeholder="What's happening?" maxlength="280")
+      .modal-footer#tw-modal-footer
+        div
+          = icon('fas', 'image')
+        div
+          = icon('fas', 'film')
+        div
+          = icon('fas', 'chart-bar')
+        div
+          = icon('fas', 'smile')
+        div
+          = icon('fas', 'calendar-alt')
+        div
+          button.btn.tw-btn.twitter-dark(style="height: calc(2.5rem + 2px);") Tweet
+            

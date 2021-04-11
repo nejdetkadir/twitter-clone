@@ -1,9 +1,12 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "toastr/build/toastr";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 $twtblue: rgb(29, 161, 242);
 $twbluelight: #0dcaf01a;
 $twbluedark: #0083d4eb;
+$bordercolor: #607d8b47;
 
 .twt-btn{
   color: white;
@@ -13,11 +16,6 @@ $twbluedark: #0083d4eb;
 
 .twt-btn:hover{
   color: white;
-}
-
-html,body{
-  width: 100vw;
-  height: 100vh;
 }
 
 #home-area{
@@ -89,6 +87,253 @@ html,body{
   width: 100% !important;
 }
 
+.w-80{
+  width: 80% !important;
+}
+
+.w-130{
+  width: 130% !important;
+}
+
+#left-bar{
+  font-size: larger;
+  position: fixed;
+  z-index: 1030;
+}
+
+.left-bar-logo{
+  position: fixed;
+  z-index: 1030;
+}
+
+#left-bar > a{
+  text-decoration: none;
+}
+
+#right-bar{
+  position: fixed;
+  z-index: 1030;
+}
+
+.tw-menu-item{
+  color: black;
+  padding: 14px 14px 14px 14px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.tw-menu-item > i{
+  margin-right: 10px;
+}
+
+.tw-menu-item:hover{
+  background-color: $twbluelight !important;
+  color: $twtblue !important;
+  border-radius: 50px;
+}
+
+#tw-modal-footer{
+  justify-content: space-between !important;
+}
+
+#tw-modal-footer > div > i{
+  color: $twtblue !important;
+  padding: 8px 8px 8px 8px;
+  font-size: 23px;
+}
+
+#tw-modal-footer > div > i:hover{
+  background-color: $twbluelight !important;
+  border-radius: 50px;
+}
+
+#tw-modal-txarea{
+  border: none !important;
+ 	resize: none !important;
+  width: 100% !important;
+}
+
+#tw-modal-txarea:focus{
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.hide-in-desktop{
+  display: none;
+}
+
+#main-feed{
+  border-right: 1px solid $bordercolor;
+  border-left: 1px solid $bordercolor;
+}
+
+#main-feed > .d-flex > i {
+  color: $twtblue !important;
+  padding: 8px 8px 8px 8px;
+  font-size: 23px;
+}
+
+#main-feed > .d-flex > i:hover{
+  background-color: $twbluelight !important;
+  border-radius: 50px;
+}
+
+#search-input{
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #e9ecef;
+  border-radius: 0px 20px 20px 0px;;
+}
+
+.right-bar-card{
+  background-color: #f7f9fa;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.right-bar-card > .d-flex > i{
+  color: $twtblue !important;
+  padding: 8px 8px 8px 8px;
+  font-size: 20px;
+}
+
+.right-bar-card > .d-flex{
+  border-bottom: 1px solid $bordercolor;
+  padding: 10px 10px 10px 10px;
+}
+
+.right-bar-card > .d-flex > i:hover{
+  background-color: $twbluelight !important;
+  border-radius: 50px;
+}
+
+.right-bar-item > .d-flex{
+  align-items: center;
+  border-bottom: 1px solid $bordercolor;
+  padding: 10px 10px 10px 10px;
+}
+
+.right-bar-item > .d-flex > i{
+  padding: 10px 10px 10px 10px;
+}
+
+.right-bar-item > .d-flex > i:hover{
+  color: $twtblue;
+  background-color: $twbluelight;
+  border-radius: 50px;
+}
+
+.mini-follow-btn{
+  width: 5rem !important;
+  height: auto !important;
+}
+
+.last-right-bar-item{
+  border-bottom: none !important;
+}
+
+.right-bar-item:last-child{
+  border-radius: 0px 0px 20px 20px;;
+}
+
+.right-bar-item:hover{
+  background-color: #e4ecf1;
+  cursor: pointer;
+}
+
+.trend-count{
+  font-size: 0.75rem;
+}
+
+#search-area > span > i{
+  color: #5b7083;
+}
+
+#search-area > span{
+  border-radius: 20px 0px 0px 20px;;
+}
+
+.user-footer{
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  z-index: 1030;
+  margin-bottom: 20px;
+}
+
+.user-footer > .d-flex > .d-block{
+  padding-left: 8px;
+}
+
+h6.username{
+  font-size: small;
+  color: #6e8091;
+}
+
+.user-footer:hover{
+  background-color: $twbluelight;
+  border-radius: 30px;
+}
+
+.tweet{
+  border-bottom: 1px solid $bordercolor;
+  padding: 10px 10px 10px 10px;
+}
+
+.tweet:hover{
+  background-color: #e4ecf1;
+  cursor: pointer;
+}
+
+.tweet-image{
+  border: 1px solid $bordercolor;
+  border-radius: 30px;
+}
+
+.tweet-actions{
+  justify-content: space-around;
+}
+
+.tweet-actions > i{
+  font-size: larger;
+  color: #6e8091;
+  padding: 8px 8px 8px 8px;
+  border-radius: 50px;
+}
+
+i.comment:hover{
+  color: $twtblue;
+  background-color: $twbluelight;
+}
+
+i.retweet:hover{
+  color: #4caf50;
+  background-color: #90ee9052;
+}
+
+i.like:hover{
+  color: red;
+  background-color: #ff000033;
+}
+
+i.share:hover{
+  color: $twtblue;
+  background-color: $twbluelight;
+}
+
+#main{
+  --bs-gutter-x: 0rem;
+  padding: 2px 2px 2px 2px;
+}
+
 @media only screen and (max-width: 600px) {
   .fluid-in-mobile{
     width: 100% !important;
@@ -96,6 +341,10 @@ html,body{
   
   .hide-in-mobile{
     display: none !important;
+  }
+
+  .show-in-mobile{
+    display: block !important;
   }
 
   #home-area{
@@ -106,5 +355,10 @@ html,body{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
+  }
+
+  #main{
+    padding: 20px 0px 0px 0px !important;
+    --bs-gutter-x: 1.5rem;
   }
 }

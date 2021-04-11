@@ -29,6 +29,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'devise'
 gem 'slim'
 gem 'toastr-rails'
+gem 'font-awesome-sass', '~> 5.15.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
