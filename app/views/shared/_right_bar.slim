@@ -1,0 +1,74 @@
+.col-md-3.hide-in-mobile.ps-3
+  #right-bar
+    .input-group#search-area
+      span.input-group-text
+        = icon('fas', 'search')
+      input.form-control#search-input(type='text' placeholder='Search Twitter')
+    .right-bar-card.mt-5
+      .d-flex.justify-content-between
+        h4 Trends for you
+        = icon('fas', 'cog')
+      .right-bar-item
+        .d-flex.justify-content-between
+          div
+            h6 test1
+            .trend-count 45.000K
+          = icon('fas', 'ellipsis-h')
+      .right-bar-item
+        .d-flex.justify-content-between
+          div
+            h6 test2
+            .trend-count 45.000K
+          = icon('fas', 'ellipsis-h')
+      .right-bar-item
+        .d-flex.justify-content-between
+          div
+            h6 test3
+            .trend-count 45.000K
+          = icon('fas', 'ellipsis-h')
+      .right-bar-item
+        .d-flex.justify-content-between
+          div
+            h6 test4
+            .trend-count 45.000K
+          = icon('fas', 'ellipsis-h')
+      .right-bar-item
+        .d-flex.justify-content-between
+          div
+            h6 test5
+            .trend-count 45.000K
+          = icon('fas', 'ellipsis-h')
+      .right-bar-item
+        .d-flex.last-right-bar-item.tw-text Show more
+    .right-bar-card.mt-5
+      .d-flex.justify-content-between
+        h4 Who to follow
+      .right-bar-item
+        .d-flex.justify-content-between
+          .d-flex
+            = image_tag "default_profile.png", :style => "width: 45px; height: 45px;"
+            .d-block.ps-2
+              h6 user1
+              .trend-count 45.000K
+          button.btn.tw-btn.twitter-light.mini-follow-btn
+            span Follow
+      .right-bar-item
+        .d-flex.justify-content-between
+          .d-flex
+            = image_tag "default_profile.png", :style => "width: 45px; height: 45px;"
+            .d-block.ps-2
+              h6 user2
+              .trend-count 45.000K
+          button.btn.tw-btn.twitter-light.mini-follow-btn
+            span Follow
+      .right-bar-item
+        .d-flex.justify-content-between
+          .d-flex
+            = image_tag "default_profile.png", :style => "width: 45px; height: 45px;"
+            .d-block.ps-2
+              h6 user3
+              .trend-count 45.000K
+          button.btn.tw-btn.twitter-light.mini-follow-btn
+            span Follow
+      .right-bar-item
+        .d-flex.last-right-bar-item.tw-text Show more

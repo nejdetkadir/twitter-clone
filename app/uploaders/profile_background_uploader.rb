@@ -29,7 +29,7 @@ class ProfileBackgroundUploader < CarrierWave::Uploader::Base
   # end
 
   version :cover do
-    process resize_to_fit: [600, 200]
+    process resize_to_fit: [1500, 500]
   end
 
   # Create different versions of your uploaded files:

@@ -1,0 +1,48 @@
+.col-md-3.hide-in-mobile
+  = image_tag  "logo-dark.png", :style => "width: 40px; height: auto;", :class => "left-bar-logo"
+  .d-block.mt-5#left-bar
+    div
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'home')
+        |&nbsp;Home
+    .mt-4
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'hashtag')
+        |&nbsp;Explore
+    .mt-4
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'bell')
+        |&nbsp;Notification
+    .mt-4
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'envelope')
+        |&nbsp;Messages
+    .mt-4
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'bookmark')
+        |&nbsp;Bookmarks
+    .mt-4
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'list-alt')
+        |&nbsp;Lists
+    .mt-4
+      = link_to profiles_index_path, class: "tw-menu-item" do
+        = icon('fas', 'user')
+        |&nbsp;Profile
+    .mt-4
+      = link_to feed_path, class: "tw-menu-item" do
+        = icon('fas', 'ellipsis-h')
+        |&nbsp;More
+    .mt-4.d-grid.gap-2
+      button.btn.tw-btn.twitter-dark.w-100(type="button" data-bs-toggle="modal" data-bs-target="#tweetModal") Tweet
+  .d-flex.justify-content-between.user-footer
+    .d-flex
+      - if current_user.profile_picture?
+        = image_tag current_user.profile_picture_url(:mini)
+      - else
+        = image_tag  "default_profile.png", :style => "width: 38px; height: 38px;"
+      .d-block
+        h6
+          = current_user.fullname
+        h6.username @#{current_user.username}
+    = icon('fas', 'ellipsis-h')

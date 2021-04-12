@@ -334,6 +334,65 @@ i.share:hover{
   padding: 2px 2px 2px 2px;
 }
 
+#profile-picture{
+  position: absolute;
+  margin-top: -67px;
+  margin-left: 25px;
+}
+
+#profile-picture > div > img{
+  border-radius: 100px;
+  border: 4px solid white;
+  cursor: pointer;
+}
+
+.profile-details{
+  padding-left: 20px;
+  margin-top: 4rem;
+}
+
+.profile-icons{
+  align-items: center;
+}
+
+.profile-icons > i{
+  color: #6e8091;
+  padding-right: 5px;
+}
+
+small.website{
+  color: $twtblue;
+  cursor: pointer;
+}
+
+small.website:hover{
+  text-decoration: underline;
+}
+
+.profile-edit{
+  float: right;
+  height: calc(2.5rem + 2px) !important;
+}
+
+.profile-tabs > ul > .nav-item {
+  color: #6e8091;
+  width: 20% !important;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-weight: bold;
+}
+
+.profile-tabs > ul > .active{
+  color: $twtblue;
+  border-bottom: 2px solid $twbluedark;
+}
+
+.profile-tabs > ul > .nav-item:hover{
+  background-color: $twbluelight;
+  color: $twtblue;
+}
+
 @media only screen and (max-width: 600px) {
   .fluid-in-mobile{
     width: 100% !important;

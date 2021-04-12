@@ -1,53 +1,6 @@
 .container
   .row.pt-3#main
-    .col-md-3.hide-in-mobile
-      = image_tag  "logo-dark.png", :style => "width: 40px; height: auto;", :class => "left-bar-logo"
-      .d-block.mt-5#left-bar
-        div
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'home')
-            |&nbsp;Home
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'hashtag')
-            |&nbsp;Explore
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'bell')
-            |&nbsp;Notification
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'envelope')
-            |&nbsp;Messages
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'bookmark')
-            |&nbsp;Bookmarks
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'list-alt')
-            |&nbsp;Lists
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'user')
-            |&nbsp;Profile
-        .mt-4
-          = link_to feed_path, class: "tw-menu-item" do
-            = icon('fas', 'ellipsis-h')
-            |&nbsp;More
-        .mt-4.d-grid.gap-2
-          button.btn.tw-btn.twitter-dark.w-100(type="button" data-bs-toggle="modal" data-bs-target="#tweetModal") Tweet
-      .d-flex.justify-content-between.user-footer
-        .d-flex
-          - if current_user.profile_picture?
-            = image_tag current_user.profile_picture_url(:mini)
-          - else
-            = image_tag  "default_profile.png", :style => "width: 38px; height: 38px;"
-          .d-block
-            h6
-              = current_user.fullname
-            h6.username @#{current_user.username}
-        = icon('fas', 'ellipsis-h')
+    = render "shared/left_bar"
     .col-md-6.col-sm-12#main-feed
       .d-flex.justify-content-between
         h4 Home
@@ -94,80 +47,7 @@
                 = icon('fas', 'retweet', class: 'retweet')
                 = icon('far', 'heart', class: 'like')
                 = icon('fas', 'share-square', class: 'share')
-    .col-md-3.hide-in-mobile.ps-3
-      #right-bar
-        .input-group#search-area
-          span.input-group-text
-            = icon('fas', 'search')
-          input.form-control#search-input(type='text' placeholder='Search')
-        .right-bar-card.mt-5
-          .d-flex.justify-content-between
-            h4 Trends for you
-            = icon('fas', 'cog')
-          .right-bar-item
-            .d-flex.justify-content-between
-              div
-                h6 test1
-                .trend-count 45.000K
-              = icon('fas', 'ellipsis-h')
-          .right-bar-item
-            .d-flex.justify-content-between
-              div
-                h6 test2
-                .trend-count 45.000K
-              = icon('fas', 'ellipsis-h')
-          .right-bar-item
-            .d-flex.justify-content-between
-              div
-                h6 test3
-                .trend-count 45.000K
-              = icon('fas', 'ellipsis-h')
-          .right-bar-item
-            .d-flex.justify-content-between
-              div
-                h6 test4
-                .trend-count 45.000K
-              = icon('fas', 'ellipsis-h')
-          .right-bar-item
-            .d-flex.justify-content-between
-              div
-                h6 test5
-                .trend-count 45.000K
-              = icon('fas', 'ellipsis-h')
-          .right-bar-item
-            .d-flex.last-right-bar-item.tw-text Show more
-        .right-bar-card.mt-5
-          .d-flex.justify-content-between
-            h4 Who to follow
-          .right-bar-item
-            .d-flex.justify-content-between
-              .d-flex
-                = image_tag "default_profile.png", :style => "width: 45px; height: 45px;"
-                .d-block.ps-2
-                  h6 user1
-                  .trend-count 45.000K
-              button.btn.tw-btn.twitter-light.mini-follow-btn
-                span Follow
-          .right-bar-item
-            .d-flex.justify-content-between
-              .d-flex
-                = image_tag "default_profile.png", :style => "width: 45px; height: 45px;"
-                .d-block.ps-2
-                  h6 user2
-                  .trend-count 45.000K
-              button.btn.tw-btn.twitter-light.mini-follow-btn
-                span Follow
-          .right-bar-item
-            .d-flex.justify-content-between
-              .d-flex
-                = image_tag "default_profile.png", :style => "width: 45px; height: 45px;"
-                .d-block.ps-2
-                  h6 user3
-                  .trend-count 45.000K
-              button.btn.tw-btn.twitter-light.mini-follow-btn
-                span Follow
-          .right-bar-item
-            .d-flex.last-right-bar-item.tw-text Show more
+    = render "shared/right_bar"
 = render "shared/tweet_modal"
 //= link_to "Logout", destroy_user_session_path, class: "mt-5 ms-5", data: {:confirm => 'Are you sure?'}, method: :delete
 //= current_user.as_json
