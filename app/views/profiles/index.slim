@@ -1,62 +1,7 @@
 .container
   .row.pt-3#main
     = render "shared/left_bar"
-    .col-md-6.col-sm-12#main-feed
-      .d-flex.justify-content-between
-        h4 #{current_user.fullname}
-      hr.mb-0
-      - if current_user.profile_background_picture?
-        = image_tag current_user.profile_background_picture_url(:cover), class: "img-fluid", alt: current_user.fullname
-      - else
-        = image_tag  "default_profile_background.png", :class => "img-fluid", alt: current_user.fullname
-      div#profile-picture
-        div
-          img.(src="https://pbs.twimg.com/profile_images/1228807164531281928/aiwKGIp__400x400.jpg" height="135")
-      .pe-2.pt-2
-        button.btn.tw-btn.twitter-light.profile-edit Edit profile
-      .profile-details
-        h3 #{current_user.fullname}
-        h6.username @#{current_user.username}
-        - if current_user.bio?
-          p #{current_user.bio}
-        .profile-icons.d-flex
-          //- if current_user.location
-          = icon('fas', 'map-marker-alt') do
-          small Turkey
-          //if current_user.website?
-          = icon('fas', 'link', class: 'ps-2')
-          small.website www.nejdetkadirbektas.com
-        .profile-icons
-          = icon('fas', 'birthday-cake')
-          small Born January 4, 20000
-          = icon('fas', 'calendar-alt', class: 'ps-2')
-          small Joined #{current_user.created_at.to_formatted_s(:long)}
-      .profile-tabs.mt-3
-        ul.nav.justify-content-between
-          li.nav-item.active Tweets
-          li.nav-item Tweets & replies
-          li.nav-item Media
-          li.nav-item Likes
-      .tweets
-        - (0..20).each do |p|
-          .tweet
-            .row
-              .col-md-1
-                = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;"
-              .col-md-11
-                .d-flex
-                  h6.fw-bold user#{p}&#160;
-                  h6.username @username#{p}&#160;|
-                  h6.username &#160;#{time_ago_in_words(DateTime.current.to_date)} ago
-                p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, molestiae modi perspiciatis voluptatem eaque itaque odit illum hic sapiente veritatis. Dicta sequi eum eaque similique amet vel minus voluptate deleniti.
-                - if p % 3 == 0
-                  = image_tag  "logo-dark.png", :class => "img-fluid tweet-image mb-2" 
-              .col-md-12
-                .d-flex.tweet-actions
-                  = icon('far', 'comment', class: 'comment')
-                  = icon('fas', 'retweet', class: 'retweet')
-                  = icon('far', 'heart', class: 'like')
-                  = icon('fas', 'share-square', class: 'share')
+    = render "profiles/profile", user: current_user
     = render "shared/right_bar"
 = render "shared/tweet_modal"
 //= link_to "Logout", destroy_user_session_path, class: "mt-5 ms-5", data: {:confirm => 'Are you sure?'}, method: :delete

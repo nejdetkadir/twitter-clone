@@ -1,0 +1,27 @@
+.container
+  .row.pt-3#main
+    = render "shared/left_bar"
+    = render "profiles/profile", user: @user
+    = render "shared/right_bar"
+= render "shared/tweet_modal"
+javascript:
+  $(document).on('turbolinks:load', function() {
+    $(".follow-button").click(function() {
+      $.ajax({
+        type: "POST",
+        url: window.location.href,
+        success: function(res) {
+          if (res.status == true) {
+            toastr.success("Your friend request has been sent")
+          } else {
+            toastr.error("An error has occurred")
+          }
+        },
+        error: function() {
+          toastr.error("An error has occurred")
+        }
+      })
+    })
+  })
+//= link_to "Logout", destroy_user_session_path, class: "mt-5 ms-5", data: {:confirm => 'Are you sure?'}, method: :delete
+//= current_user.as_json

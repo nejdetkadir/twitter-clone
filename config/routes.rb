@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/feed', to: 'pages#feed'
   
   # profiles
-  get 'profiles/index'
+  get 'profiles/me', to: 'profiles#index'
+  get 'profiles/:id', to: 'profiles#show'
+  post 'profiles/:id', to: 'profiles#send_follow_request'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
