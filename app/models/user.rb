@@ -16,6 +16,6 @@ class User < ApplicationRecord
   mount_uploader :profile_background_picture, ProfileBackgroundUploader
 
   # associations
-
+  has_friendship
   
 end
