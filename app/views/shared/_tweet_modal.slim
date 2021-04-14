@@ -1,5 +1,5 @@
 #tweetModal.modal.fade(tabindex='-1' aria-labelledby='tweetModalLabel' aria-hidden='true')
-  .modal-dialog
+  = form_for(Tweet.new, url: tweets_path, html: {class: "modal-dialog"}) do |f| 
     .modal-content
       .modal-header
         - if current_user.profile_picture?
@@ -15,10 +15,11 @@
             - else
               = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;" , :class => "hide-in-mobile"
           .col-md-10
-            textarea#tw-modal-txarea(rows="8" placeholder="What's happening?" maxlength="280")
+            = f.text_area :content, id: "tw-modal-txarea", rows: "8", placeholder: "What's happening?", maxlength: "280"
+            = f.file_field :images, multiple: true, class: "d-none tw-modal-image-input"
       .modal-footer#tw-modal-footer
         div
-          = icon('fas', 'image')
+          = icon('fas', 'image', class: "tw-modal-image-icon")
         div
           = icon('fas', 'film')
         div
@@ -28,5 +29,10 @@
         div
           = icon('fas', 'calendar-alt')
         div
-          button.btn.tw-btn.twitter-dark(style="height: calc(2.5rem + 2px);") Tweet
-            
+          = f.submit "Tweet", class: "btn tw-btn twitter-dark", style: "height: calc(2.5rem + 2px);"            
+javascript:
+  $(document).on('turbolinks:load', function() {
+    $(".tw-modal-image-icon").click(function() {
+      $(".tw-modal-image-input").click()
+    })
+  })

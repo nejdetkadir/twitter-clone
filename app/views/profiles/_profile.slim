@@ -38,19 +38,19 @@
       li.nav-item Media
       li.nav-item Likes
   .tweets
-    - (0..20).each do |p|
+    - user.tweets.reverse_each do |tweet|
       .tweet
         .row
           .col-md-1
             = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;"
           .col-md-11
             .d-flex
-              h6.fw-bold user#{p}&#160;
-              h6.username @username#{p}&#160;|
-              h6.username &#160;#{time_ago_in_words(DateTime.current.to_date)} ago
-            p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, molestiae modi perspiciatis voluptatem eaque itaque odit illum hic sapiente veritatis. Dicta sequi eum eaque similique amet vel minus voluptate deleniti.
-            - if p % 3 == 0
-              = image_tag  "logo-dark.png", :class => "img-fluid tweet-image mb-2" 
+              h6.fw-bold #{user.fullname}&#160;
+              h6.username @#{user.username}
+              h6.username &#160;#{time_ago_in_words(tweet.created_at)} ago
+            p #{tweet.content}
+            - tweet.images.each do |image|
+              = image_tag image.url(:cover) 
           .col-md-12
             .d-flex.tweet-actions
               = icon('far', 'comment', class: 'comment')

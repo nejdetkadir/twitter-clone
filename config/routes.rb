@@ -3,11 +3,16 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  get '/feed', to: 'pages#feed'
+  authenticate :user do
+    get '/feed', to: 'pages#feed'
   
-  # profiles
-  get 'profiles/me', to: 'profiles#index'
-  get 'profiles/:id', to: 'profiles#show'
-  post 'profiles/:id', to: 'profiles#send_follow_request'
+    # profiles
+    get 'profiles/me', to: 'profiles#index'
+    get 'profiles/:id', to: 'profiles#show'
+    post 'profiles/:id', to: 'profiles#send_follow_request'
+
+    # resources
+    resources :tweets, except: [:new, :index]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
