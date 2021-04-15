@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   # associations
   has_friendship
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
   
   # callbacks
   def on_friendship_created(friendship)
