@@ -1,7 +1,10 @@
 .tweet
   .row
     .col-md-1
-      = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;"
+      - if tweet.user.profile_picture?
+        = image_tag tweet.user.profile_picture.url(:small) 
+      - else
+        = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;"
     .col-md-11
       .d-flex
         h6.fw-bold #{tweet.user.fullname}&#160;

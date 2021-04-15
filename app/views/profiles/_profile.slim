@@ -8,7 +8,10 @@
     = image_tag  "default_profile_background.png", :class => "img-fluid", alt: user.fullname
   div.profile-picture
     div
-      img.(src="https://pbs.twimg.com/profile_images/1228807164531281928/aiwKGIp__400x400.jpg" height="135")
+      - if user.profile_picture?
+        = image_tag user.profile_picture.url(:medium) 
+      - else
+        = image_tag "default_profile.png" 
   .pe-2.pt-2
     - if current_user == user
       button.btn.tw-btn.twitter-light.profile-edit(data-bs-toggle="modal" data-bs-target="#editProfileModal") Edit profile
