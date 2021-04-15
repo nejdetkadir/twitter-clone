@@ -30,9 +30,10 @@
           = icon('fas', 'calendar-alt')
         div
           = f.submit "Tweet", class: "btn tw-btn twitter-dark", style: "height: calc(2.5rem + 2px);"            
-javascript:
-  $(document).on('turbolinks:load', function() {
-    $(".tw-modal-image-icon").click(function() {
-      $(".tw-modal-image-input").click()
+- content_for :js do 
+  javascript:
+    $(document).on('turbolinks:load', function() {
+      $(".tw-modal-image-icon").click(function() {
+        $(".tw-modal-image-input").click()
+      })
     })
-  })

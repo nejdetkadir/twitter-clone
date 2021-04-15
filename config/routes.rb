@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'profiles/me', to: 'profiles#index'
     get 'profiles/:id', to: 'profiles#show'
     post 'profiles/:id', to: 'profiles#send_follow_request'
-
+    patch 'profiles/me', to: "profiles#update", as: "profile_update"
     # resources
     resources :tweets, except: [:new, :index]
   end

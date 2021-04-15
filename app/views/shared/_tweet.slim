@@ -1,0 +1,18 @@
+.tweet
+  .row
+    .col-md-1
+      = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;"
+    .col-md-11
+      .d-flex
+        h6.fw-bold #{tweet.user.fullname}&#160;
+        h6.username @#{tweet.user.username}
+        h6.username &#160;#{time_ago_in_words(tweet.created_at)} ago
+      p #{tweet.content}
+      - tweet.images.each do |image|
+        = image_tag image.url(:cover), class: "img-fluid"
+    .col-md-12
+      .d-flex.tweet-actions
+        = icon('far', 'comment', class: 'comment')
+        = icon('fas', 'retweet', class: 'retweet')
+        = icon('far', 'heart', class: 'like')
+        = icon('fas', 'share-square', class: 'share')

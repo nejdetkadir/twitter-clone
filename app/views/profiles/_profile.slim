@@ -6,12 +6,12 @@
     = image_tag user.profile_background_picture_url(:cover), class: "img-fluid", alt: user.fullname
   - else
     = image_tag  "default_profile_background.png", :class => "img-fluid", alt: user.fullname
-  div#profile-picture
+  div.profile-picture
     div
       img.(src="https://pbs.twimg.com/profile_images/1228807164531281928/aiwKGIp__400x400.jpg" height="135")
   .pe-2.pt-2
     - if current_user == user
-      button.btn.tw-btn.twitter-light.profile-edit Edit profile
+      button.btn.tw-btn.twitter-light.profile-edit(data-bs-toggle="modal" data-bs-target="#editProfileModal") Edit profile
     - else
       button.btn.tw-btn.twitter-light.profile-edit.follow-button Follow
   .profile-details
@@ -20,17 +20,18 @@
     - if user.bio?
       p #{user.bio}
     .profile-icons.d-flex
-      //- if user.location
-      = icon('fas', 'map-marker-alt') do
-      small Turkey
-      //if user.website?
-      = icon('fas', 'link', class: 'ps-2')
-      small.website www.nejdetkadirbektas.com
+      - if user.location?
+        = icon('fas', 'map-marker-alt') do
+        small #{user.location}
+      - if user.website?
+        = icon('fas', 'link', class: 'ps-2')
+        small.website #{user.website}
     .profile-icons
-      = icon('fas', 'birthday-cake')
-      small Born January 4, 20000
+      - if user.birth_date?
+        = icon('fas', 'birthday-cake')
+        small #{user.birth_date.to_formatted_s(:short)}
       = icon('fas', 'calendar-alt', class: 'ps-2')
-      small Joined #{user.created_at.to_formatted_s(:long)}
+      small Joined #{user.created_at.to_formatted_s(:short)}
   .profile-tabs.mt-3
     ul.nav.justify-content-between
       li.nav-item.active Tweets
@@ -39,21 +40,39 @@
       li.nav-item Likes
   .tweets
     - user.tweets.reverse_each do |tweet|
-      .tweet
-        .row
-          .col-md-1
-            = image_tag  "default_profile.png", :style => "width: 45px; height: 45px;"
-          .col-md-11
-            .d-flex
-              h6.fw-bold #{user.fullname}&#160;
-              h6.username @#{user.username}
-              h6.username &#160;#{time_ago_in_words(tweet.created_at)} ago
-            p #{tweet.content}
-            - tweet.images.each do |image|
-              = image_tag image.url(:cover) 
-          .col-md-12
-            .d-flex.tweet-actions
-              = icon('far', 'comment', class: 'comment')
-              = icon('fas', 'retweet', class: 'retweet')
-              = icon('far', 'heart', class: 'like')
-              = icon('fas', 'share-square', class: 'share')
+      = render "shared/tweet", tweet: tweet
+#editProfileModal.modal.fade(tabindex='-1' aria-labelledby='editProfileModalLabel' aria-hidden='true')
+  .modal-dialog.modal-dialog-centered
+    = form_for(current_user, url: profile_update_path, html: {class: "modal-content"}) do |f|
+      .modal-header
+        h5#editProfileModalLabel.modal-title Edit profile
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        - if current_user.profile_background_picture?
+          = image_tag current_user.profile_background_picture_url(:cover), class: "img-fluid", alt: current_user.fullname
+        - else
+          = image_tag  "default_profile_background.png", :class => "img-fluid", alt: current_user.fullname
+        div.profile-picture
+          div
+            img.(src="https://pbs.twimg.com/profile_images/1228807164531281928/aiwKGIp__400x400.jpg" height="135")
+        .form-floating.mb-3.mt-5r
+          = f.text_field :fullname, placeholder: "Name", class: "form-control"
+          label Name
+        .form-floating.mb-3
+          = f.text_area :bio, placeholder: "Bio", class: "form-control", style: "height: 150px"
+          label Bio
+        .form-floating.mb-3
+          = f.text_field :location, placeholder: "Location", class: "form-control"
+          label Location
+        .form-floating.mb-3
+          = f.url_field :website, placeholder: "Website", class: "form-control"
+          label Website
+      .modal-footer
+        = f.submit "Save", class: "btn tw-btn twitter-dark", style: "height: calc(2.5rem + 2px);"
+- content_for :js do
+  javascript:
+    $(document).on('turbolinks:load', function() {
+      $("#edit-profile-btn")
+    })
+  
+

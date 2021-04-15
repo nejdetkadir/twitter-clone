@@ -338,13 +338,13 @@ i.share:hover{
   padding: 2px 2px 2px 2px;
 }
 
-#profile-picture{
+.profile-picture{
   position: absolute;
   margin-top: -67px;
   margin-left: 25px;
 }
 
-#profile-picture > div > img{
+.profile-picture > div > img{
   border-radius: 100px;
   border: 4px solid white;
   cursor: pointer;
@@ -395,6 +395,14 @@ small.website:hover{
 .profile-tabs > ul > .nav-item:hover{
   background-color: $twbluelight;
   color: $twtblue;
+}
+
+.mt-4r{
+  margin-top: 4rem !important;
+}
+
+.mt-5r{
+  margin-top: 5rem !important;
 }
 
 @media only screen and (max-width: 600px) {
